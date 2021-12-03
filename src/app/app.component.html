@@ -1,0 +1,55 @@
+<div style="text-align: center">
+<div class="mat-display-1"  style="margin:10px" >My first todo app in Angular 😀</div> 
+<div style="color: gray; margin:auto; text-align: left; width: 450px">
+<ul >
+<li>after click on todo you can see details about todo</li>
+<li>after click on Completed/Pending you can change status of todo</li>
+</ul></div>
+<div style="margin-bottom: 30px">
+<button style="background-color: dodgerblue; color:white" mat-raised-button>ALL TODOS</button>
+<button style="background-color: dodgerblue; color:white" mat-raised-button>Completed todos</button>
+<button style="background-color: dodgerblue; color:white" mat-raised-button>Pending todos</button>
+</div>
+
+<div class="my-div"
+  *ngFor="let task of tasks">
+  <app-task 
+  [task]="task" 
+  [done]="task.done" 
+  (statusClicked)="toggleCompleted(task)" 
+  (editClicked)="editTask(task)"
+  (deleteClicked)="deleteTask(task)">
+</app-task> 
+</div>
+
+<div class="my-div" style="height: 200px; box-shadow:20px 20px 50px 10px rgb(212, 212, 212) inset">
+  
+  <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+    <h5 style="text-align: center; font-weight: bold; margin-bottom: 0px; margin-top: 10px">Title</h5>
+      <input ngModel #todoTextField1="ngModel" required minlength="2" name="title" class="input" type="text" style="width: 85%; height: 25px" matInput>
+      <div *ngIf="showValidationErrors==true">
+        <p *ngIf="todoTextField1.invalid">Please enter the title of your task</p>
+           <!-- <p *ngIf="todoTextField.errors.minlength">Todo text must be at least 2 characters</p> -->  
+           <!-- NEFUNGUJE, KED CHCEM VYPISAT DVE ERROR MESSAGE ROZNEHO TYPU, NAPR. TA DRUHA O MAX. DLZKE ZNAKOV. nefunguje .required a .minlengt, iba .invalid -->
+       </div>
+      <h5 style="text-align: center; font-weight: bold;margin-bottom: 0px; margin-top: 10px">Project</h5>
+      
+      
+      <input ngModel #todoTextField2="ngModel" required minlength="2" name="project" class="input" type="text" style="width: 85%; height: 25px; margin-bottom: 30px" matInput>
+      
+      <div *ngIf="showValidationErrors==true">
+        <p *ngIf="todoTextField2.invalid">Please enter the name of project of your task</p>
+           <!-- <p *ngIf="todoTextField.minlength">Todo text must be at least 2 characters</p> -->  
+           <!-- NEFUNGUJE, KED CHCEM VYPISAT DVE ERROR MESSAGE ROZNEHO TYPU, NAPR. TA DRUHA O MAX. DLZKE ZNAKOV. nefunguje .required a .minlengt, iba .invalid -->
+       </div>
+      <button type="submit" style="width:174px; margin:0px; height: 30px; color:dodgerblue; font-weight: bold; border-color: dodgerblue" >Create</button>
+      <button (click)="exit()" style="width:174px; margin:0px;height: 30px; ; color:rgb(241, 89, 89); font-weight: bold; border-width: 2px; border-color:rgb(241, 89, 89)">Cancel</button>
+      
+     
+
+    </form>
+</div>
+<br/>
+</div>
+
+

@@ -1,0 +1,19 @@
+<div class="mat-typography">
+    <h3 style="margin-left:6px;margin-bottom:0px; font-weight: bold; text-align: left">{{task?.title}}</h3> 
+    <h5 style="margin-left:6px;margin-bottom:3px; text-align: left">{{task?.project}}</h5>
+    <div style = "text-align:right; margin-right: 17px">
+    <a (click)="onDeleteClicked()" style="cursor: pointer"><span class="material-icons">
+        delete
+        </span></a>
+        <a (click)="onEditClicked()" style="cursor: pointer"> <span class="material-icons" style="margin-left: 12px">
+            edit
+            </span></a> 
+           </div>
+    <div class="status" (click)="onStatusClicked()" [ngClass]="done ? 'green': 'red'" >
+     <h4  style = "margin:auto; padding: 4px">{{done?'Completed':'Pending'}}
+    </h4></div>
+<h5 style="margin-left:6px; margin-bottom:2px;  margin-top: 2px; text-align: left" *ngIf="task?.details"> Details: {{task?.details}} </h5>
+</div>
+
+
+

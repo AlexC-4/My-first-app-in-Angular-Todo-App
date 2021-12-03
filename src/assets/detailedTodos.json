@@ -1,0 +1,22 @@
+{
+    "todoList": [
+        {
+            "title": "Todo A",
+            "project": "Project A",
+            "done": false,
+            "details": "First project needs to ..."
+        },
+        {
+            "title": "Todo B",
+            "project": "Project B",
+            "done": true,
+            "details": "Second project needs to ..."
+        },
+        {
+            "title": "Todo C",
+            "project": "Project C",
+            "done": false,
+            "details": "Third project needs to ..."
+        }
+    ]
+}
