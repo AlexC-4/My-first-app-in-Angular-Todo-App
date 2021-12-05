@@ -9,25 +9,31 @@ import { MaterialModule } from './material/material.module';
 import { TaskComponent } from './components/task/task.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { MatIconModule } from '@angular/material/icon';
-import { DataService } from './service/data.service';
+import { DataService } from './services/data.service';
 import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule} from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskComponent,
-    EditTaskDialogComponent
+    EditTaskDialogComponent,
+    
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     PickerModule,
     MatIconModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [
   DataService

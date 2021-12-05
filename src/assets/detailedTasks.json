@@ -1,18 +1,18 @@
 {
-    "todoList": [
-        {
+    "detailedTasks": [
+        {    "id": 1,
             "title": "Todo A",
             "project": "Project A",
             "done": false,
             "details": "First project needs to ..."
         },
-        {
+        {    "id": 2,
             "title": "Todo B",
             "project": "Project B",
             "done": true,
             "details": "Second project needs to ..."
         },
-        {
+        {    "id": 3,
             "title": "Todo C",
             "project": "Project C",
             "done": false,

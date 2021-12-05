@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TodoProjectInAngular": {
+    "my-first-angular-app-todo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "TodoProjectInAngular:build:production"
+              "browserTarget": "my-first-angular-app-todo:build:production"
             },
             "development": {
-              "browserTarget": "TodoProjectInAngular:build:development"
+              "browserTarget": "my-first-angular-app-todo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TodoProjectInAngular:build"
+            "browserTarget": "my-first-angular-app-todo:build"
           }
         },
         "test": {
@@ -105,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "TodoProjectInAngular"
+  "defaultProject": "my-first-angular-app-todo"
 }

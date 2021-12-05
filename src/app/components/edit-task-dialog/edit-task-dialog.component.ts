@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Task } from '../../service/app.types';
+import { Task } from '../../services/app.types';
 
 @Component({
   selector: 'app-edit-task-dialog',
@@ -15,6 +15,7 @@ export class EditTaskDialogComponent implements OnInit {
   @Inject(MAT_DIALOG_DATA) public task: Task) {}
   ngOnInit(): void {
   }
+
 
 close() {
   this.dialogRef.close()

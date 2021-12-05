@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output} from '@angular/core';
-import { Task } from '../../service/app.types';
+import { Task } from '../../services/app.types';
 
 @Component({
   selector: 'app-task',
@@ -13,8 +13,11 @@ export class TaskComponent {
   @Output() statusClicked: EventEmitter <void> = new EventEmitter();
   @Output() editClicked: EventEmitter<void> = new EventEmitter();
   @Output() deleteClicked: EventEmitter<void> = new EventEmitter();
+  @Output() onTaskClick: EventEmitter<number> = new EventEmitter<number>();
 
-
+   onTaskSelected():void {
+     this.onTaskClick.emit(this.task?.id);
+   }
 
   onStatusClicked() {
     this.statusClicked.emit()
@@ -29,6 +32,6 @@ export class TaskComponent {
       this.deleteClicked.emit()
     }
    
-    
+   
   }
 
