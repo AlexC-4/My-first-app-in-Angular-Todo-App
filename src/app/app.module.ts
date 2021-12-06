@@ -9,10 +9,15 @@ import { MaterialModule } from './material/material.module';
 import { TaskComponent } from './components/task/task.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { MatIconModule } from '@angular/material/icon';
-import { DataService } from './services/data.service';
+// import { DataService } from './services/data.service';
 import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
 import { MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { TasksWrapperComponent } from './components/tasks-wrapper/tasks-wrapper.component';
+import { RoutingWrapperComponent } from './components/routing-wrapper/routing-wrapper.component';
+import { CompletedTasksComponent } from './components/completed-tasks/completed-tasks.component';
+import { PendingTasksComponent } from './components/pending-tasks/pending-tasks.component';
+import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
 
 
 
@@ -22,6 +27,11 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     TaskComponent,
     EditTaskDialogComponent,
+    TasksWrapperComponent,
+    RoutingWrapperComponent,
+    CompletedTasksComponent,
+    PendingTasksComponent,
+    AllTasksComponent,
     
   ],
   imports: [
@@ -36,7 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatDialogModule,
   ],
   providers: [
-  DataService
+  // DataService
   ],
   bootstrap: [AppComponent]
 })

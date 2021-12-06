@@ -2,7 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    // "strictPropertyInitialization": false, 
+    // "strictPropertyInitialization": false,    // Error TS2564 (TS) Property ‘class’ has no initializer and is not definitely assigned in the constructor.
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -25,7 +25,7 @@
     ]
   },
   "angularCompilerOptions": {
-    "strictPropertyInitialization": false, 
+    // "strictPropertyInitialization": false, 
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,

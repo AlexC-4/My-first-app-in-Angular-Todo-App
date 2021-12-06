@@ -1,15 +1,20 @@
 <div style="text-align: center">
-<div class="mat-display-1"  style="margin:10px" >My first todo app in Angular 😀</div> 
-<div style="color: gray; margin:auto; text-align: left; width: 450px">
-<ul >
-<li>after click on todo you can see details about todo</li>
-<li>after click on Completed/Pending you can change status of todo</li>
-</ul></div>
-<div style="margin-bottom: 30px">
-<button (click)="onAllTodosClick()" style="background-color: dodgerblue; color:white" mat-raised-button>ALL TODOS</button>
-<button style="background-color: dodgerblue; color:white" mat-raised-button>Completed todos</button>
-<button style="background-color: dodgerblue; color:white" mat-raised-button>Pending todos</button>
-</div>
+  <div class="mat-display-1"  style="margin:10px" >My first todo app in Angular 😀</div> 
+  <div style="color: gray; margin:auto; text-align: left; width: 450px">
+  <ul >
+  <li>after click on todo you can see details about todo</li>
+  <li>after click on Completed/Pending you can change status of todo</li>
+  </ul></div>
+  <div style="margin-bottom: 30px">
+  <button routerLink="" style="background-color: dodgerblue; color:white" mat-raised-button>ALL TODOS</button>
+  <button routerLink="completed-tasks" style="background-color: dodgerblue; color:white" mat-raised-button>Completed todos</button>
+  <button routerLink="pending-tasks" style="background-color: dodgerblue; color:white" mat-raised-button>Pending todos</button>
+  </div>
+  
+  <router-outlet>
+  </router-outlet>
+
+<!-- <app-routing-wrapper></app-routing-wrapper> -->
 
   <!-- <div *ng-repeat="task in tasks | filter: { properties: { done: true } }"></div> -->
 
@@ -80,6 +85,5 @@
 </div>
 <br/>
 
-</div>
 
 
