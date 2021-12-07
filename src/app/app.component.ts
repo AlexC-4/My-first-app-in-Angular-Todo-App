@@ -2,11 +2,11 @@ import { CompiledStylesheet, CompileTemplateMetadata } from '@angular/compiler';
 import { Component, OnInit,EventEmitter, Output, Inject } from '@angular/core';
 import { DetailedTasks, Task, Tasks } from './services/app.types';
 import { TaskComponent } from './components/task/task.component';
-// import { DataService } from './services/data.service';
 import { NgForm } from '@angular/forms';
 import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient} from '@angular/common/http';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -18,20 +18,19 @@ export class AppComponent implements OnInit {
   title(title: any) {
     throw new Error('Method not implemented.');
   }
-  tasks: Task[] = [];
-  detailedTasks: Task[] | undefined;
+  // tasks: Task[];
+  // detailedTasks: Task[] | undefined;
   showValidationErrors: boolean = false;
   titlePage = 'Todo Project In Angular';
-  selectedTask: Task | undefined;
+  // selectedTask: Task | undefined;
   task: Task | undefined;
   inputTitleValue!: string;
   inputProjectValue!: string;
  
-
   @Output() cancelClicked: EventEmitter<void> = new EventEmitter()
 
   constructor(
-    // private _dataService: DataService, 
+    public _dataService: DataService, 
     private dialog: MatDialog,  
     public httpClient: HttpClient
     ) {
@@ -57,31 +56,33 @@ export class AppComponent implements OnInit {
 
  private getTasks(){
     this.httpClient.get<Tasks>("assets/tasks.json").subscribe((resultOfTasks:Tasks) => {
-      this.tasks = resultOfTasks.tasks;
-      console.log(resultOfTasks);
+      this._dataService.tasks = resultOfTasks.tasks;
+      console.log("Task finished loading")
+      this._dataService.onTaskLoad$.next();
+      console.log(this._dataService.tasks);
     })}
     
     private getDetailedTasks() {
     this.httpClient.get<DetailedTasks>("assets/detailedTasks.json").subscribe(resultOfDetailedTasks => {
-      this.detailedTasks = resultOfDetailedTasks.detailedTasks;
-      console.log(resultOfDetailedTasks);
+      this._dataService.detailedTasks = resultOfDetailedTasks.detailedTasks;
+      this._dataService.onDetailedTaskLoad$.next();
+      console.log(this._dataService.detailedTasks);
     })
 
   }
  
+
   addTask(task: Task) {
-    this.tasks.push(task)
+    this._dataService.tasks?.push(task)
     }
-    
     updateTask(index: number, updatedTask: Task ) {
-     
-    this.tasks[index] = updatedTask
+    this._dataService.tasks[index] = updatedTask
     }
     
   onFormSubmit(form: NgForm) {
     if(!form.valid) {this.showValidationErrors = true }
     else{
-    this.addTask(new Task(form.value.title, form.value.project))
+    // this.addTask(new Task(form.value.title, form.value.project))
     form.reset()
   }
   }
@@ -97,7 +98,7 @@ editTask(task:Task){
   //-index of todo
   //-user needs to enter new informations
   
-  const index = this.tasks.indexOf(task)
+  const index = this._dataService.tasks.indexOf(task)
    
 
   let dialogRef = this.dialog.open(EditTaskDialogComponent, {
@@ -114,11 +115,11 @@ editTask(task:Task){
 
 }
  deleteTask1(index: number): void {
-    this.tasks.splice(index, 1)
+    this._dataService.tasks?.splice(index, 1)
     }
 
 deleteTask(task: Task){
-  const index = this.tasks.indexOf(task)
+  const index = this._dataService.tasks?.indexOf(task)
   this.deleteTask1(index)
 }
 
@@ -129,11 +130,11 @@ cancel() {
 }
 
 
-onTaskClick(selectedTaskId: number) {
-  if (this.selectedTask?.id === selectedTaskId) return;
-  this.selectedTask = this.detailedTasks?.find(task => task.id === selectedTaskId);
-  console.log(this.selectedTask);
-}
+// onTaskClick(selectedTaskId: number) {
+//   if (this.selectedTask?.id === selectedTaskId) return;
+//   this.selectedTask = this.detailedTasks?.find(task => task.id === selectedTaskId);
+//   console.log(this.selectedTask);
+// }
 
 }
 

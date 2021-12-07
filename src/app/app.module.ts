@@ -9,7 +9,7 @@ import { MaterialModule } from './material/material.module';
 import { TaskComponent } from './components/task/task.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { MatIconModule } from '@angular/material/icon';
-// import { DataService } from './services/data.service';
+import { DataService } from './services/data.service';
 import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
 import { MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
@@ -46,7 +46,7 @@ import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
     MatDialogModule,
   ],
   providers: [
-  // DataService
+  DataService
   ],
   bootstrap: [AppComponent]
 })

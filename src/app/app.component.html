@@ -6,33 +6,34 @@
   <li>after click on Completed/Pending you can change status of todo</li>
   </ul></div>
   <div style="margin-bottom: 30px">
-  <button routerLink="" style="background-color: dodgerblue; color:white" mat-raised-button>ALL TODOS</button>
+  <button routerLink="task-list" style="background-color: dodgerblue; color:white" mat-raised-button>ALL TODOS</button>
   <button routerLink="completed-tasks" style="background-color: dodgerblue; color:white" mat-raised-button>Completed todos</button>
   <button routerLink="pending-tasks" style="background-color: dodgerblue; color:white" mat-raised-button>Pending todos</button>
   </div>
   
-  <router-outlet>
-  </router-outlet>
+ 
 
 <!-- <app-routing-wrapper></app-routing-wrapper> -->
 
   <!-- <div *ng-repeat="task in tasks | filter: { properties: { done: true } }"></div> -->
-
-<div *ngIf="!selectedTask">
+<!-- 
+<div *ngIf="!selectedTask"> -->
   <div class="my-div"
-  *ngFor="let task of tasks">
+  *ngFor="let task of _dataService.tasks" >
   <app-task 
   [task]="task" 
+  [routerLink]="['', task.id]"
   [done]="task.done" 
   (statusClicked)="toggleCompleted(task)" 
   (editClicked)="editTask(task)"
   (deleteClicked)="deleteTask(task)"
-  (onTaskClick)="onTaskClick($event)">
+  >
+   <!-- (onTaskClick)="onTaskClick($event)" -->
 </app-task> 
 </div>
-</div>
+<!-- </div> -->
 
-<div *ngIf="selectedTask">
+<!-- <div *ngIf="selectedTask">          // TOTO, co sa ma ukazat, ked vyberiem jeden taks, MOZEM ZMAZAT, spravim to cez routing
 <div class="my-div">
 <app-task 
 [task]="selectedTask" 
@@ -42,7 +43,7 @@
 (deleteClicked)="deleteTask(selectedTask)"
 (onTaskClick)="onTaskClick($event)"></app-task>
 </div>
-</div>
+</div> -->
 
 
 
@@ -55,7 +56,7 @@
 </div> -->
 
 
-<div *ngIf="!selectedTask" class="my-div" style="height: 200px; box-shadow:20px 20px 50px 10px rgb(212, 212, 212) inset">
+<div  class="my-div" style="height: 200px; box-shadow:20px 20px 50px 10px rgb(212, 212, 212) inset">
   
   <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
 
@@ -79,7 +80,6 @@
       <button type="submit" style="width:174px; margin:0px; height: 30px; color:dodgerblue; font-weight: bold; border-color: dodgerblue" >Create</button>
       <button type="button" (click)="cancel()" style="width:174px; margin:0px;height: 30px; ; color:rgb(241, 89, 89); font-weight: bold; border-width: 2px; border-color:rgb(241, 89, 89)">Cancel</button>
       
-     
 
     </form>
 </div>

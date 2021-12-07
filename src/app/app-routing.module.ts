@@ -6,6 +6,7 @@ import { CompletedTasksComponent } from './components/completed-tasks/completed-
 import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
 import { PendingTasksComponent } from './components/pending-tasks/pending-tasks.component';
 import { RoutingWrapperComponent } from './components/routing-wrapper/routing-wrapper.component';
+import { TaskComponent } from './components/task/task.component';
 import { TasksWrapperComponent } from './components/tasks-wrapper/tasks-wrapper.component';
 
 "localhost:4200/completedtasks"
@@ -18,14 +19,22 @@ const routes: Routes = [
     path: "",
     component: RoutingWrapperComponent,
     children: [
-      {
-        path: "",
-        redirectTo: "task-list",
-        pathMatch: "full"
-      },
+      // {
+      //   path: "",
+      //   redirectTo: "task-list",
+      //   pathMatch: "full"
+      // },
+      {path: ":id",
+          component: TaskComponent
+        },
       {
         path: "task-list",
         component: AppComponent,
+        children:[
+          {path: ":id",
+          component: TaskComponent
+        }
+        ]
       },
       {
         path: "edittask",
@@ -40,7 +49,13 @@ const routes: Routes = [
   component: PendingTasksComponent
 }
       ]
-    }  
+    },
+    {
+      path: "**",
+      redirectTo: "",      //localhost:4200
+      pathMatch: "full"
+      // component: NotFoundComponent
+  }  
 ];
 
 @NgModule({
