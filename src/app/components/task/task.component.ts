@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { Task } from '../../services/app.types';
@@ -9,7 +9,7 @@ import { Task } from '../../services/app.types';
   styleUrls: ['./task.component.css']
 })
 
-export class TaskComponent {
+export class TaskComponent implements OnInit {
   @Input() task: Task | undefined;
   @Input() done: boolean | undefined;
   @Output() statusClicked: EventEmitter <void> = new EventEmitter();
@@ -21,13 +21,26 @@ export class TaskComponent {
    private _id: string | undefined;
 
     constructor(private _activatedRoute: ActivatedRoute, private _dataService:DataService) {
-          this._activatedRoute.params.subscribe(i => (this._id = i["id"]))
-      this._dataService.onDetailedTaskLoad$.subscribe(() => {
-          this.task = this._dataService.tasks?.find(task => task.id === +(this._id as any));
-          console.log(this._id);
-          console.log(this._dataService.detailedTasks); 
-          console.log("Loaded");
-        })
+  }
+
+  ngOnInit(): void {
+    if (this.task) return;
+    console.log(this.task);
+          this._activatedRoute.params.subscribe(params => {
+            this._id = params["id"];
+            console.log(this._id);
+            if(!this._dataService.detailedTasks) {
+            this._dataService.onDetailedTaskLoad$.subscribe(() => {
+              this.task = this._dataService.detailedTasks?.find(detailedTask => detailedTask.id === +(this._id as any));
+              console.log(this._id);
+              console.log(this._dataService.detailedTasks); 
+              console.log("Loaded");
+            })
+          }
+          else {
+            this.task = this._dataService.detailedTasks?.find(detailedTask => detailedTask.id === +(this._id as any));   
+          }
+          })  
   }
 
    onTaskSelected():void {

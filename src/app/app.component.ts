@@ -7,6 +7,7 @@ import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient} from '@angular/common/http';
 import { DataService } from './services/data.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -82,7 +83,7 @@ export class AppComponent implements OnInit {
   onFormSubmit(form: NgForm) {
     if(!form.valid) {this.showValidationErrors = true }
     else{
-    // this.addTask(new Task(form.value.title, form.value.project))
+    this.addTask(new Task(form.value.title, form.value.project))
     form.reset()
   }
   }
@@ -130,6 +131,20 @@ cancel() {
 }
 
 
+onCompletedTasks(){
+  this._dataService.tasks = this._dataService.getCompletedTasks();
+}
+
+onPendingTasks(){ 
+  this._dataService.tasks = this._dataService.getPendingTasks();
+}
+
+onAllTasks(){
+  this.getTasks();
+}
+
+
+
 // onTaskClick(selectedTaskId: number) {
 //   if (this.selectedTask?.id === selectedTaskId) return;
 //   this.selectedTask = this.detailedTasks?.find(task => task.id === selectedTaskId);
@@ -137,5 +152,4 @@ cancel() {
 // }
 
 }
-
 

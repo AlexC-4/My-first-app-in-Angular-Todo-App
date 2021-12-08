@@ -15,9 +15,9 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { TasksWrapperComponent } from './components/tasks-wrapper/tasks-wrapper.component';
 import { RoutingWrapperComponent } from './components/routing-wrapper/routing-wrapper.component';
-import { CompletedTasksComponent } from './components/completed-tasks/completed-tasks.component';
 import { PendingTasksComponent } from './components/pending-tasks/pending-tasks.component';
 import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
+
 
 
 
@@ -29,9 +29,9 @@ import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
     EditTaskDialogComponent,
     TasksWrapperComponent,
     RoutingWrapperComponent,
-    CompletedTasksComponent,
     PendingTasksComponent,
     AllTasksComponent,
+  
     
   ],
   imports: [

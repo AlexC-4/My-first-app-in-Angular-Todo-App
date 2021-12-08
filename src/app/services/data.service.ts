@@ -66,4 +66,15 @@ export class DataService {
         
     }
 
+    getCompletedTasks(){
+        this.tasks = this.tasks?.filter(task => task.done == true);
+        return this.tasks;
+      }
+      
+      getPendingTasks(){
+        this.tasks = this.tasks?.filter(task => task.done == false);
+        return this.tasks;
+      }
+      
+
 }

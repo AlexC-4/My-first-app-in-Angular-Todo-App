@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
-import { CompletedTasksComponent } from './components/completed-tasks/completed-tasks.component';
+
 import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
 import { PendingTasksComponent } from './components/pending-tasks/pending-tasks.component';
 import { RoutingWrapperComponent } from './components/routing-wrapper/routing-wrapper.component';
@@ -40,14 +40,18 @@ const routes: Routes = [
         path: "edittask",
         component: EditTaskDialogComponent
       },
-  {
-    path: "completed-tasks",
-    component: CompletedTasksComponent
+//   {
+//     path: "completed-tasks",
+//     component: CompletedTasksComponent
+// },
+{
+  path: "pending-tasks",
+  component: AppComponent
 },
 {
   path: "pending-tasks",
-  component: PendingTasksComponent
-}
+  component: AppComponent
+},
       ]
     },
     {
