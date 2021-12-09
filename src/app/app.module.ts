@@ -13,11 +13,8 @@ import { DataService } from './services/data.service';
 import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
 import { MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
-import { TasksWrapperComponent } from './components/tasks-wrapper/tasks-wrapper.component';
 import { RoutingWrapperComponent } from './components/routing-wrapper/routing-wrapper.component';
-import { PendingTasksComponent } from './components/pending-tasks/pending-tasks.component';
-import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
-
+import { TaskListComponent } from './components/task-list/task-list.component';
 
 
 
@@ -27,12 +24,9 @@ import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
     AppComponent,
     TaskComponent,
     EditTaskDialogComponent,
-    TasksWrapperComponent,
     RoutingWrapperComponent,
-    PendingTasksComponent,
-    AllTasksComponent,
+    TaskListComponent
   
-    
   ],
   imports: [
     BrowserModule,

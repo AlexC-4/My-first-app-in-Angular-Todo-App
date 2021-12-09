@@ -13,3 +13,22 @@
     color: red;
     border-color: red;
 }
+
+
+button {
+    margin-right: 9px;
+    margin-left: 9px;
+}
+
+
+.my-div {
+    border-style: solid;
+     height: 150px; 
+     border-width: 1px; 
+     border-color: lightgray; 
+     border-radius: 5px; 
+     width: 400px; 
+     margin:auto; 
+     margin-bottom: 20px
+}
+ 

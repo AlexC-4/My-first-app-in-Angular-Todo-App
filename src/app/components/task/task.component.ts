@@ -12,15 +12,18 @@ import { Task } from '../../services/app.types';
 export class TaskComponent implements OnInit {
   @Input() task: Task | undefined;
   @Input() done: boolean | undefined;
+  @Output() onTaskClick: EventEmitter<number> = new EventEmitter<number>();
   @Output() statusClicked: EventEmitter <void> = new EventEmitter();
   @Output() editClicked: EventEmitter<void> = new EventEmitter();
   @Output() deleteClicked: EventEmitter<void> = new EventEmitter();
-  @Output() onTaskClick: EventEmitter<number> = new EventEmitter<number>();
+ 
 
 
    private _id: string | undefined;
 
     constructor(private _activatedRoute: ActivatedRoute, private _dataService:DataService) {
+      console.log(_activatedRoute);
+      console.log(this._id);
   }
 
   ngOnInit(): void {

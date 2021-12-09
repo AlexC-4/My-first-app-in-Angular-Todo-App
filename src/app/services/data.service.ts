@@ -59,22 +59,28 @@ export class DataService {
     //   }
     // ];
 
-    onTaskLoad$: Subject<void> = new Subject<void>();
-    onDetailedTaskLoad$: Subject<void> = new Subject<void>();
+
 
     constructor(){
         
     }
 
+    onTaskLoad$: Subject<void> = new Subject<void>();
+    onDetailedTaskLoad$: Subject<void> = new Subject<void>();
+    
+
+    deleteTask(index: number): void {
+      this.tasks.splice(index, 1)
+      }
+
     getCompletedTasks(){
-        this.tasks = this.tasks?.filter(task => task.done == true);
-        return this.tasks;
-      }
-      
-      getPendingTasks(){
-        this.tasks = this.tasks?.filter(task => task.done == false);
-        return this.tasks;
-      }
-      
+      this.tasks = this.tasks?.filter(task => task.done == true);
+      return this.tasks;
+    }
+    
+    getPendingTasks(){
+      this.tasks = this.tasks?.filter(task => task.done == false);
+      return this.tasks;
+    }
 
 }

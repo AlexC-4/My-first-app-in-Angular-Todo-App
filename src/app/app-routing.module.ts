@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
-
 import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
-import { PendingTasksComponent } from './components/pending-tasks/pending-tasks.component';
 import { RoutingWrapperComponent } from './components/routing-wrapper/routing-wrapper.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskComponent } from './components/task/task.component';
-import { TasksWrapperComponent } from './components/tasks-wrapper/tasks-wrapper.component';
+
 
 "localhost:4200/completedtasks"
 "localhost:4200/pendingtasks"
@@ -19,39 +17,30 @@ const routes: Routes = [
     path: "",
     component: RoutingWrapperComponent,
     children: [
+      {
+        path: "",
+        component:TaskListComponent
+      },
+      {
+        path: ":id",
+        component:TaskComponent
+      },
       // {
-      //   path: "",
-      //   redirectTo: "task-list",
+      //   path: "pending-tasks",
+      //   redirectTo: "",
       //   pathMatch: "full"
       // },
-      {path: ":id",
-          component: TaskComponent
-        },
-      {
-        path: "task-list",
-        component: AppComponent,
-        children:[
-          {path: ":id",
-          component: TaskComponent
-        }
-        ]
-      },
+      // {
+      //   path: "pending-tasks",
+      //   redirectTo: "",
+      //   pathMatch: "full"
+      // },
+   
       {
         path: "edittask",
         component: EditTaskDialogComponent
       },
-//   {
-//     path: "completed-tasks",
-//     component: CompletedTasksComponent
-// },
-{
-  path: "pending-tasks",
-  component: AppComponent
-},
-{
-  path: "pending-tasks",
-  component: AppComponent
-},
+
       ]
     },
     {
