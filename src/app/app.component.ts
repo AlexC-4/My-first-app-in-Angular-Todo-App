@@ -9,7 +9,7 @@ import { HttpClient} from '@angular/common/http';
 import { DataService } from './services/data.service';
 import { filter, Subject } from 'rxjs';
 
-
+const ENDPOINT_BASE_URL = 'http://localhost:3000/api'
 
 @Component({
   selector: 'app-root',
@@ -34,7 +34,7 @@ export class AppComponent  {
 
            
  private getTasks(){
-  this.httpClient.get<Tasks>("assets/tasks.json").subscribe((resultOfTasks:Tasks) => {
+  this.httpClient.get<Tasks>(`${ENDPOINT_BASE_URL}/tasks`).subscribe((resultOfTasks:Tasks) => {
     this._dataService.tasks = resultOfTasks.tasks;
     console.log("Task finished loading")
     this._dataService.onTaskLoad$.next();
@@ -42,7 +42,7 @@ export class AppComponent  {
   })}
   
   private getDetailedTasks() {
-  this.httpClient.get<DetailedTasks>("assets/detailedTasks.json").subscribe(resultOfDetailedTasks => {
+  this.httpClient.get<DetailedTasks>(`${ENDPOINT_BASE_URL}/detailedTasks`).subscribe(resultOfDetailedTasks => {
     this._dataService.detailedTasks = resultOfDetailedTasks.detailedTasks;
     this._dataService.onDetailedTaskLoad$.next();
     console.log(this._dataService.detailedTasks);

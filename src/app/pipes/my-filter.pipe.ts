@@ -1,8 +1,10 @@
 // import { Pipe, PipeTransform } from '@angular/core';
 
+
 // @Pipe({
 //     name: 'myfilter',
-//     pure: false
+//     pure: false,
+//     task: Task
 // })
 // export class MyFilterPipe implements PipeTransform {
 //     transform(tasks: any[], filter: (task: any) => boolean): any {
