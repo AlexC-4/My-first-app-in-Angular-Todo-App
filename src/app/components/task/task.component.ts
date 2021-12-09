@@ -62,7 +62,7 @@ export class TaskComponent implements OnInit {
      onDeleteClicked() {
       this.deleteClicked.emit()
     }
-   
-   
+
+          
   }
 
